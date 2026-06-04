@@ -12,18 +12,15 @@ jobs:
 
     steps:
 
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Setup Python
-      uses: actions/setup-python@v5
+    - uses: actions/setup-python@v5
       with:
         python-version: "3.13"
 
-    - name: Install Dependencies
-      run: |
-        pip install -r requirements.txt
+    - run: pip install -r requirements.txt
 
-    - name: Run Tests
-      run: |
-        pytest -v
+    - run: pytest -v
+
+    - run: docker build -t age-classifier .
+    
